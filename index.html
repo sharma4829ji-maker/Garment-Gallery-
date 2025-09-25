@@ -1,0 +1,104 @@
+<html>
+<head>
+  <title>Garment & Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #add8e6; /* 🔵 हल्का Blue background */
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 3em;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+      padding: 20px;
+      margin: 0;
+      background: orange; /* 🟠 Heading background Orange */
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 30px;
+    }
+
+    .product {
+      width: 220px;
+      border-radius: 15px;
+      background: white;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product h3 {
+      margin: 10px 0 5px;
+      color: #e96443;
+    }
+
+    .product p {
+      margin: 5px 0;
+    }
+
+    .product b {
+      color: #904e95;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Garment & Gallery</h1>
+  <div class="products" id="product-list"></div>
+
+  <script>
+    // ✅ पहला product (आपका दिया हुआ)
+    const products = [
+      { id: 1, name: "Stylish T-Shirt", price: 499, image_url: "https://cdn.pixabay.com/photo/2016/03/27/21/49/t-shirt-1284451_1280.png", description: "Comfortable cotton T-shirt", category: "Tops" }
+    ];
+
+    // ✅ बाकी products auto-generate (2 से 500 तक)
+    for (let i = 2; i <= 500; i++) {
+      products.push({
+        id: i,
+        name: "Product " + i,
+        price: 300 + (i * 5),
+        image_url: "https://via.placeholder.com/220x220?text=Product+" + i,
+        description: "Auto generated product " + i,
+        category: "General"
+      });
+    }
+
+    // ✅ अब सारे product दिखाएँ
+    const container = document.getElementById("product-list");
+    products.forEach(p => {
+      container.innerHTML += `
+        <div class="product">
+          <img src="${p.image_url}" alt="${p.name}">
+          <h3>${p.name}</h3>
+          <p>${p.description}</p>
+          <p><b>₹${p.price}</b></p>
+          <p>${p.category}</p>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
